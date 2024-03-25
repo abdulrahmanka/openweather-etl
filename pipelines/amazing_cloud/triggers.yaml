@@ -1,0 +1,28 @@
+triggers:
+- envs: []
+  last_enabled_at: 2024-03-25 07:53:58.766513
+  name: Beverly Hills Trigger
+  pipeline_uuid: amazing_cloud
+  schedule_interval: 5/5 * * * *
+  schedule_type: time
+  settings: null
+  sla: null
+  start_time: 2024-03-25 07:52:00
+  status: active
+  variables:
+    lat: 34.0901
+    lon: -118.4065
+- envs: []
+  last_enabled_at: 2024-03-25 07:52:17.255772
+  name: London Weather
+  pipeline_uuid: amazing_cloud
+  schedule_interval: 10/10 * * * *
+  schedule_type: time
+  settings:
+    timeout_status: cancelled
+  sla: null
+  start_time: 2024-03-25 07:51:00
+  status: active
+  variables:
+    lat: 44.34
+    lon: 10.99

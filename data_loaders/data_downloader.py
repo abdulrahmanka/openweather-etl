@@ -18,7 +18,7 @@ def load_data_from_api(*args, **kwargs) -> str:
     logger = kwargs.get('logger')
     lat = kwargs.get('lat')
     lon = kwargs.get('lon')
-    appid = get_secret_value('openweater_appid')
+    appid = get_secret_value('openweather_appid')
     logger.info(f"Invoking API with lat as {lat} and lon as {lon}")
     
     url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={appid}"
