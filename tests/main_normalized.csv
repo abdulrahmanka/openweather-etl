@@ -1,0 +1,3 @@
+dt,visibility,pop,dt_txt,temp,feels_like,temp_min,temp_max,pressure,sea_level,grnd_level,humidity,temp_kf,wind_speed,wind_deg,wind_gust,rain_1h,rain_2h,rain_3h,clouds_all,snow_clouds_all,date_key,city_id,snow_1h,snow_2h,snow_3h
+1711162800,10000,0,2024-03-23 03:00:00,280.43,278.38,280.43,282.65,1015,1015,947,72,-2.22,3.02,203,3.82,50.0,50.0,50.0,86,86,2024032303,3163858,0.0,0.0,0.0
+1711173600,10000,0,2024-03-23 06:00:00,280.96,278.75,280.96,282.01,1015,1015,946,71,-1.05,3.46,197,5.46,,,,79,79,2024032306,3163858,0.0,0.0,0.0

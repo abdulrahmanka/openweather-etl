@@ -1,0 +1,102 @@
+{
+  "cod": "200",
+  "message": 0,
+  "cnt": 40,
+  "list": [
+    {
+      "dt": 1711162800,
+      "main": {
+        "temp": 280.43,
+        "feels_like": 278.38,
+        "temp_min": 280.43,
+        "temp_max": 282.65,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 947,
+        "humidity": 72,
+        "temp_kf": -2.22
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overcast clouds",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 86
+      },
+      "rain":{
+          "1h": 50,
+          "2h": 50,
+          "3h": 50
+      },
+      "snow":{
+          "1h": 50,
+          "2h": 50,
+          "3h": 50
+      },
+      "wind": {
+        "speed": 3.02,
+        "deg": 203,
+        "gust": 3.82
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2024-03-23 03:00:00"
+    },
+    {
+      "dt": 1711173600,
+      "main": {
+        "temp": 280.96,
+        "feels_like": 278.75,
+        "temp_min": 280.96,
+        "temp_max": 282.01,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 946,
+        "humidity": 71,
+        "temp_kf": -1.05
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "broken clouds",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 79
+      },
+      "wind": {
+        "speed": 3.46,
+        "deg": 197,
+        "gust": 5.46
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2024-03-23 06:00:00"
+    }
+  ],
+  "city": {
+    "id": 3163858,
+    "name": "Zocca",
+    "coord": {
+      "lat": 44.34,
+      "lon": 10.99
+    },
+    "country": "IT",
+    "population": 4593,
+    "timezone": 3600,
+    "sunrise": 1711170791,
+    "sunset": 1711215105
+  }
+}

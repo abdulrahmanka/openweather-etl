@@ -14,10 +14,12 @@ def create_batch(data, **kwargs) -> DataFrame:
     config_profile = 'default'
     query = """INSERT INTO public.tbl_batches
     ( batch_name, batch_description, status, inserted_at, insert_user)
-    VALUES('weather_forcast-etl', '', 'ACTIVE'::character varying, CURRENT_TIMESTAMP, 'elt_user') RETURNING batch_id;"""
+    VALUES('weather_forcast-etl', '', 'PROCESSING'::character varying, CURRENT_TIMESTAMP, 'elt_user') 
+    RETURNING batch_id;"""
 
     with Postgres.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
         batch_df = loader.load(query)
         batch_id = batch_df.iloc[0, 0]
+        loader.commit()
         
         return batch_id

@@ -1,19 +1,17 @@
 blocks:
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: null
   downstream_blocks:
   - json_transformer
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: data-downloader
-  retry_config:
-    delay: 10
-    exponential_backoff: true
-    max_delay: 120
-    retries: 3
+  name: data_downloader
+  retry_config: null
   status: executed
   timeout: null
   type: data_loader
@@ -21,9 +19,11 @@ blocks:
   uuid: data_downloader
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: null
   downstream_blocks:
-  - create_batch
+  - batch_creator
   - city_exporter
   - weather_exporter
   - forcast_exporter
@@ -42,9 +42,8 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration:
-    data_provider: postgres
-    data_provider_profile: default
-    export_write_policy: append
+    file_source:
+      path: null
   downstream_blocks:
   - city_exporter
   - weather_exporter
@@ -54,20 +53,19 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: create_batch
+  name: batch_creator
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
   - json_transformer
-  uuid: create_batch
+  uuid: batch_creator
 - all_upstream_blocks_executed: true
   color: null
   configuration:
-    data_provider: postgres
-    data_provider_profile: default
-    export_write_policy: append
+    file_source:
+      path: null
   downstream_blocks:
   - forcast_exporter
   executor_config: null
@@ -80,12 +78,14 @@ blocks:
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - create_batch
+  - batch_creator
   - json_transformer
   uuid: city_exporter
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: null
   downstream_blocks:
   - forcast_exporter
   executor_config: null
@@ -99,11 +99,13 @@ blocks:
   type: data_exporter
   upstream_blocks:
   - json_transformer
-  - create_batch
+  - batch_creator
   uuid: weather_exporter
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: null
   downstream_blocks:
   - close_batch
   executor_config: null
@@ -112,18 +114,20 @@ blocks:
   language: python
   name: forcast_exporter
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
   - weather_exporter
   - city_exporter
   - json_transformer
-  - create_batch
+  - batch_creator
   uuid: forcast_exporter
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: null
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
@@ -131,39 +135,83 @@ blocks:
   language: python
   name: close_batch
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
   - forcast_exporter
-  - create_batch
+  - batch_creator
   uuid: close_batch
 cache_block_output_in_memory: false
-callbacks: []
+callbacks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: misty surf
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: callback
+  upstream_blocks:
+  - city_exporter
+  - weather_exporter
+  - forcast_exporter
+  uuid: misty_surf
 concurrency_config: {}
 conditionals: []
-created_at: '2024-03-16 05:49:53.060391+00:00'
+created_at: '2024-03-24 12:51:23.267369+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
-executor_type: null
-extensions:
-  great_expectations:
-    blocks: []
-name: weathered byte
-notification_config: {}
+executor_type: local_python
+extensions: {}
+name: amazing cloud
+notification_config:
+  alert_on:
+  - trigger_failure
+  - trigger_success
+  - trigger_passed_sla
+  message_templates:
+    failure:
+      summary: 'Failed to execute pipeline {pipeline_run_url}. Pipeline uuid: {pipeline_uuid}.
+        Trigger name: {pipeline_schedule_name}. Test custom message."
+
+        '
+      title: Failed to execute pipeline {pipeline_uuid} at {execution_time}
+    passed_sla:
+      summary: 'SLA to execute pipeline {pipeline_run_url}. Pipeline uuid: {pipeline_uuid}.
+        Trigger name: {pipeline_schedule_name}. Test custom message."
+
+        '
+      title: SLA to execute pipeline {pipeline_uuid} at {execution_time}
+    success:
+      summary: 'Sucess to execute pipeline {pipeline_run_url}. Pipeline uuid: {pipeline_uuid}.
+        Trigger name: {pipeline_schedule_name}. Test custom message."
+
+        '
+      title: Sucess to execute pipeline {pipeline_uuid} at {execution_time}
+  telegram_config:
+    webhook_url: https://api.telegram.org/bot7080040939:AAFFluEIXx3arHdHvBAFmCnsK1IptzEGL88/sendMessage?chat_id=-4151581804
 remote_variables_dir: null
-retry_config: {}
+retry_config:
+  delay: 10
+  max_delay: 120
+  retries: 3
 run_pipeline_in_one_process: false
 settings:
   triggers: null
 spark_config: {}
 tags: []
 type: python
-uuid: weathered_byte
+uuid: amazing_cloud
 variables:
-  lat: 51.5073219
-  lon: -0.1276474
-variables_dir: C:\Users\abdul/.mage_data\openweather-etl
+  lat: 44.34
+  lon: 10.99
+variables_dir: C:\Users\abdul/.mage_data\openweather_etl
 widgets: []
